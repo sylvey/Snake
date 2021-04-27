@@ -14,9 +14,11 @@ private:
   queue operations:若有能事先計算好可以走的路徑，紀錄在此
   
 public:
-  queue nextPosition:讓主程式運行貪食蛇的下一步
+  queue nextPosition:回傳貪食蛇的下一步
     (1)若有事先計算好之operation，運行之
-    (2)確定
+    (2)若operation皆運行完成，讓虛擬蛇去找到一條可以走的路，並運行之
+    (3)若虛擬蛇未找到一條可以走的路，清空operation，計算離食物最遠的方向，往該方向走
+    (4)若上述作業皆無法回傳下一步，遵循下左右上之優先順序移動
   tuple getTarget:在地圖中找到下一個食物目標位置
   bool collide:確認某個位置是否能行走
  
@@ -26,10 +28,10 @@ private:基本與主蛇相同
   tuple target:食物位置
 
 public:
-  queue nextPosition:讓主蛇運行虛擬蛇的下一步
+  queue nextPosition:回傳虛擬蛇的下一步位置
   bool collide:確認某個位置是否能行走
-  queue nextPositionForTail:進行尋找尾巴的計算
-  queue nextPositionForRoad:進行尋找食物的計算並確認在找到食物後可以找到尾巴
+  queue nextPositionForTail:運用在尋找尾巴的計算
+  queue nextPositionForRoad:運用在尋找食物的計算，並幫主蛇紀錄路徑
   queue getpositionNow:回傳目前虛擬蛇之位置
   
 3. glbal function

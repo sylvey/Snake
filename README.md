@@ -5,3 +5,34 @@
 2. 如果遵循下左右上的優先順序能吃得到食物，放出虛擬蛇，若虛擬蛇吃完食物還可以遵循下左右上的順序找到蛇尾，就讓蛇去吃
 3. 若找不到食物及蛇尾，往離食物最遠的方向走
 4. 若上述方式皆無法走，遵循下左右上的優先順序移動
+
+實作：
+1. 主蛇
+private:
+  queue position:紀錄蛇目前的位置資訊
+  tuple target:食物位置
+  queue operations:若有能事先計算好可以走的路徑，紀錄在此
+  
+public:
+  queue nextPosition:讓主程式運行貪食蛇的下一步
+    (1)若有事先計算好之operation，運行之
+    (2)確定
+  tuple getTarget:在地圖中找到下一個食物目標位置
+  bool collide:確認某個位置是否能行走
+ 
+2. 虛擬蛇
+private:基本與主蛇相同
+  queue position:紀錄蛇目前的位置資訊
+  tuple target:食物位置
+
+public:
+  queue nextPosition:讓主蛇運行虛擬蛇的下一步
+  bool collide:確認某個位置是否能行走
+  queue nextPositionForTail:進行尋找尾巴的計算
+  queue nextPositionForRoad:進行尋找食物的計算並確認在找到食物後可以找到尾巴
+  queue getpositionNow:回傳目前虛擬蛇之位置
+  
+3. glbal function
+bool findingTail:運行虛擬蛇找到尾巴，回傳是否能找到尾巴
+bool findingRoad:運行虛擬蛇找到食物，並確定可以找到尾巴，回傳是否存在此路徑
+ 

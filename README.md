@@ -7,7 +7,7 @@
 4. 若上述方式皆無法走，遵循下左右上的優先順序移動
 
 ## 實作：
-1. 主蛇
+1. 主蛇<br>
   private:<br>
     queue position:紀錄蛇目前的位置資訊<br>
     tuple target:食物位置<br>
